@@ -17,25 +17,25 @@ export class ProjectsService {
     @InjectRepository(UsersProjectsEntity)
     private readonly userProjectRepository: Repository<UsersProjectsEntity>,
     private readonly usersService: UsersService,
-    private readonly httpService: HttpCustomService
+    private readonly httpService: HttpCustomService,
   ) {}
 
   public async createProject(body: ProjectDTO, userId: string): Promise<any> {
     try {
-      const user = await this.usersService.findUserById(userId)
+      const user = await this.usersService.findUserById(userId);
       const project = await this.projectRepository.save(body);
       return await this.userProjectRepository.save({
         accessLevel: ACCESS_LEVEL.OWNER,
         user: user,
-        project
-      })
+        project,
+      });
     } catch (error) {
       throw ErrorManager.createSignatureError(error.message);
     }
   }
 
-  public async listApi(){
-    return this.httpService.apiFindAll()
+  public async listApi() {
+    return this.httpService.apiFindAll();
   }
 
   public async findProjects(): Promise<ProjectsEntity[]> {
@@ -58,8 +58,8 @@ export class ProjectsService {
       const project = await this.projectRepository
         .createQueryBuilder('project')
         .where({ id })
-        .leftJoinAndSelect('project.usersIncludes','usersIncludes')
-        .leftJoinAndSelect('usersIncludes.user','user')
+        .leftJoinAndSelect('project.usersIncludes', 'usersIncludes')
+        .leftJoinAndSelect('usersIncludes.user', 'user')
         .getOne();
       if (!project) {
         throw new ErrorManager({

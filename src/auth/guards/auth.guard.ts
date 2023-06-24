@@ -46,12 +46,12 @@ export class AuthGuard implements CanActivate {
 
     const { sub } = manageToken;
     const user = await this.userService.findUserById(sub);
-    if(!user){
+    if (!user) {
       throw new UnauthorizedException('Invalid user');
     }
 
-    req.idUser = user.id
-    req.roleUser = user.role
+    req.idUser = user.id;
+    req.roleUser = user.role;
     return true;
   }
 }

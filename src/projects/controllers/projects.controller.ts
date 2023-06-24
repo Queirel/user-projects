@@ -11,7 +11,6 @@ import {
 } from '@nestjs/common';
 import { ApiParam, ApiTags } from '@nestjs/swagger';
 import { AccessLevel } from 'src/auth/decorators/access-level.decorator';
-import { AdminAccess } from 'src/auth/decorators/admin.decorator';
 import { PublicAccess } from 'src/auth/decorators/public.decorator';
 import { Roles } from 'src/auth/decorators/roles.decorator';
 import { AccessLevelGuard } from 'src/auth/guards/access-level.guard';
@@ -54,8 +53,8 @@ export class ProjectsController {
 
   @PublicAccess()
   @Get('list/api')
-  public async listApi(){
-    return this.projectService.listApi()
+  public async listApi() {
+    return this.projectService.listApi();
   }
 
   @ApiParam({

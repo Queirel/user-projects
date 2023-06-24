@@ -18,13 +18,13 @@ export interface AuthResponse {
 
 export interface AuthTokenResult {
   role: string;
-  sub:  string;
-  iat:  number;
-  exp:  number;
+  sub: string;
+  iat: number;
+  exp: number;
 }
 
 export interface IUseToken {
   role: string;
-  sub:  string;
-  isExpired: boolean
+  sub: string;
+  isExpired: boolean;
 }

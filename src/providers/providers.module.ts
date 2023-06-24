@@ -4,8 +4,8 @@ import { HttpCustomService } from './http/http.service';
 
 @Global()
 @Module({
-  imports:[HttpModule],
+  imports: [HttpModule],
   providers: [HttpCustomService],
-  exports: [HttpModule, HttpCustomService]
+  exports: [HttpModule, HttpCustomService],
 })
 export class ProvidersModule {}

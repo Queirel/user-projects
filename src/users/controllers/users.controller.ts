@@ -7,14 +7,12 @@ import {
   ParseUUIDPipe,
   Post,
   Put,
-  Req,
   UseGuards,
 } from '@nestjs/common';
-import { ApiHeader, ApiHeaders, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { ApiHeader, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { AccessLevel } from 'src/auth/decorators/access-level.decorator';
 import { AdminAccess } from 'src/auth/decorators/admin.decorator';
 import { PublicAccess } from 'src/auth/decorators/public.decorator';
-import { Roles } from 'src/auth/decorators/roles.decorator';
 import { AccessLevelGuard } from 'src/auth/guards/access-level.guard';
 import { AuthGuard } from 'src/auth/guards/auth.guard';
 import { RolesGuard } from 'src/auth/guards/roles.guard';
@@ -48,7 +46,7 @@ export class UsersController {
   })
   @ApiResponse({
     status: 400,
-    description: 'No se encontro resultado'
+    description: 'No se encontro resultado',
   })
   @Get(':id')
   public async findUserById(@Param('id', new ParseUUIDPipe()) id: string) {

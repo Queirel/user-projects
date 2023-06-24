@@ -6,7 +6,7 @@ export class AuthDTO implements AuthBody {
   @ApiProperty()
   @IsNotEmpty()
   username: string;
-  
+
   @ApiProperty()
   @IsNotEmpty()
   @IsString()

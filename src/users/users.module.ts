@@ -6,11 +6,9 @@ import { UsersEntity } from './entities/users.entity';
 import { UsersProjectsEntity } from './entities/usersProjects.entity';
 @Global()
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([UsersEntity,UsersProjectsEntity])
-  ],
+  imports: [TypeOrmModule.forFeature([UsersEntity, UsersProjectsEntity])],
   providers: [UsersService],
   controllers: [UsersController],
-  exports:[UsersService, TypeOrmModule]
+  exports: [UsersService, TypeOrmModule],
 })
 export class UsersModule {}

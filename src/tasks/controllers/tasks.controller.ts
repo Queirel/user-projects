@@ -13,7 +13,7 @@ export class TasksController {
   constructor(private readonly tasksService: TasksService) {}
 
   @ApiParam({
-    name: 'projectId'
+    name: 'projectId',
   })
   @AccessLevel('DEVELOPER')
   @Post('create/:projectId')
@@ -21,6 +21,6 @@ export class TasksController {
     @Body() body: TasksDTO,
     @Param('projectId') projectId: string,
   ) {
-    return this.tasksService.createTask(body, projectId)
+    return this.tasksService.createTask(body, projectId);
   }
 }
